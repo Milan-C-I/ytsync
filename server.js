@@ -11,11 +11,13 @@ app.prepare().then(() => {
   const server = express();
   const httpServer = createServer(server);
 
+  // Socket.io
   const io = new Server(httpServer, {
     cors: {
-      origin: "*", // you can restrict this in production
+      origin: "*",
     },
   });
+
 const rooms = {}
 
 io.on("connection", (socket) => {
@@ -110,6 +112,8 @@ io.on("connection", (socket) => {
     })
   })})
 })
+
+
   const PORT = process.env.PORT || 4000; // fallback for local dev
   httpServer.listen(PORT, () => console.log(`Socket.IO + Next.js server running on port ${PORT}`));
 
