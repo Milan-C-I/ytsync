@@ -14,12 +14,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || "https://youtube-watch-party-5z8o.onrender.com";
-
-const socket = io(SOCKET_URL, {
-  transports: ["websocket"],
-});
-
+const socket = io("http://localhost:4000")
 
 export default function RoomPage() {
   const { id: roomCode } = useParams()
