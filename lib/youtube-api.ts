@@ -27,7 +27,7 @@ export interface YouTubeSearchResponse {
 
 export async function searchYouTubeVideos(query: string, maxResults = 10): Promise<YouTubeVideo[]> {
   try {
-    const API_KEY = process.env.YOUTUBE_API_KEY
+    const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY
     if (!API_KEY) {
       throw new Error("YouTube API key not found")
     }

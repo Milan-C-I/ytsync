@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const PORT = process.env.PORT || "http://localhost:4000"
+const PORT = process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:4000"
 const socket = io(PORT)
 
 export default function RoomPage() {
