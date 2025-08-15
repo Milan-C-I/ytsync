@@ -1,38 +1,38 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+"use client"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { motion } from "framer-motion"
 
 export default function HomePage() {
-  const router = useRouter();
-  const [roomCode, setRoomCode] = useState("");
-  const [userName, setUserName] = useState("");
+  const router = useRouter()
+  const [roomCode, setRoomCode] = useState("")
+  const [userName, setUserName] = useState("")
 
   // Generate a random room code
   const generateRoomCode = () => {
-    return Math.random().toString(36).substring(2, 8).toUpperCase(); // Example: "A1B2C3"
-  };
+    return Math.random().toString(36).substring(2, 8).toUpperCase() // Example: "A1B2C3"
+  }
 
   const createRoom = () => {
     if (!userName.trim()) {
-      alert("Please enter your name before creating a room.");
-      return;
+      alert("Please enter your name before creating a room.")
+      return
     }
-    const newRoomCode = generateRoomCode();
-    router.push(`/room/${newRoomCode}?user=${encodeURIComponent(userName)}`);
-  };
+    const newRoomCode = generateRoomCode()
+    router.push(`/room/${newRoomCode}?user=${encodeURIComponent(userName)}`)
+  }
 
   const joinRoom = () => {
     if (!roomCode.trim()) {
-      alert("Please enter a valid room code.");
-      return;
+      alert("Please enter a valid room code.")
+      return
     }
     if (!userName.trim()) {
-      alert("Please enter your name before joining a room.");
-      return;
+      alert("Please enter your name before joining a room.")
+      return
     }
-    router.push(`/room/${roomCode}?user=${encodeURIComponent(userName)}`);
-  };
+    router.push(`/room/${roomCode}?user=${encodeURIComponent(userName)}`)
+  }
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8">
@@ -77,9 +77,10 @@ export default function HomePage() {
           About This Platform
         </h2>
         <p className="mt-2 text-gray-400">
-          Enjoy watching YouTube videos with friends in sync. Create a room, share the code, and experience seamless group viewing.
+          Enjoy watching YouTube videos with friends in sync. Create a room, share the code, and experience seamless
+          group viewing.
         </p>
       </motion.div>
     </div>
-  );
+  )
 }
