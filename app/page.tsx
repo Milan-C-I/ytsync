@@ -2,6 +2,9 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
+import BlurText from "./blurtext"
+import Galaxy from "./galaxy"
+import LightRays from "./lightrays"
 
 export default function HomePage() {
   const router = useRouter()
@@ -34,11 +37,36 @@ export default function HomePage() {
     router.push(`/room/${roomCode}?user=${encodeURIComponent(userName)}`)
   }
 
+  const handleAnimationComplete = () => {
+  console.log('Animation completed!');
+};
+
+
   return (
+    <>
+    <div style={{ width: '100%', height: '600px', position: 'fixed'}}>
+      <LightRays
+        raysOrigin="top-center"
+        raysColor="#cccccc"
+        raysSpeed={1.5}
+        lightSpread={0.8}
+        rayLength={1.2}
+        followMouse={true}
+        mouseInfluence={0.1}
+        noiseAmount={0.1}
+        distortion={0.05}
+        className="custom-rays"
+      />
+      </div>
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8">
-      <header className="text-center text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-        Multi-User YouTube Watch Party
-      </header>
+      <BlurText
+        text="Multi-User YouTube Watch Party"
+        delay={150}
+        animateBy="words"
+        direction="top"
+        onAnimationComplete={handleAnimationComplete}
+        className="text-7xl font-extrabold mb-20"
+      />
 
       <motion.div
         className="w-full max-w-4xl bg-neutral-900/50 backdrop-blur-lg rounded-xl p-6 shadow-xl border border-neutral-800"
@@ -53,7 +81,7 @@ export default function HomePage() {
         />
       </motion.div>
 
-      <div className="flex flex-wrap gap-4 justify-center mt-6">
+      <div className="flex z-10 flex-wrap gap-4 justify-center mt-6">
         <button onClick={createRoom} className="bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-300 shadow-md">
           Create Room
         </button>
@@ -82,5 +110,6 @@ export default function HomePage() {
         </p>
       </motion.div>
     </div>
+    </>
   )
 }
