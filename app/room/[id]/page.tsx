@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const socket = io("http://localhost:4000")
+const socket = io("https://youtube-watch-party-5z8o.onrender.com")
 
 export default function RoomPage() {
   const { id: roomCode } = useParams()
