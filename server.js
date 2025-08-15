@@ -1,5 +1,5 @@
-
-const io = require("socket.io")(4000, {
+const PORT = process.env.PORT || 4000
+const io = require("socket.io")(PORT, {
   cors: {
     origin: "*",
   },
@@ -100,4 +100,4 @@ io.on("connection", (socket) => {
   })
 })
 
-console.log("Socket.IO server running on port 4000")
+console.log("Socket.IO server running on port ", PORT)
