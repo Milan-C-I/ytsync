@@ -1,11 +1,21 @@
-const PORT = 4000;
+const express = require("express");
+const next = require("next");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 
-const io = require("socket.io")(PORT, {
-  cors: {
-    origin: "*",
-  },
-})
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
+app.prepare().then(() => {
+  const server = express();
+  const httpServer = createServer(server);
+
+  const io = new Server(httpServer, {
+    cors: {
+      origin: "*", // you can restrict this in production
+    },
+  });
 const rooms = {}
 
 io.on("connection", (socket) => {
@@ -98,7 +108,9 @@ io.on("connection", (socket) => {
         }
       }
     })
-  })
+  })})
 })
+  const PORT = process.env.PORT || 4000; // fallback for local dev
+  httpServer.listen(PORT, () => console.log(`Socket.IO + Next.js server running on port ${PORT}`));
 
-console.log("Socket.IO server running on port 4000")
+  server.all("*", (req, res) => handle(req, res));
