@@ -3,7 +3,6 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import BlurText from "./blurtext"
-import Galaxy from "./galaxy"
 import LightRays from "./lightrays"
 
 export default function HomePage() {
