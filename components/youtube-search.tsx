@@ -59,7 +59,7 @@ export function YouTubeSearch({ onVideoSelect }: YouTubeSearchProps) {
 
       {isLoading && <div className="text-center text-gray-400">Searching videos...</div>}
 
-      <div className="max-h-56 grid grid-cols-2 gap-3 overflow-y-auto scrollbar-thin">
+      <div className="max-h-56 grid grid-cols-1 md:grid-cols-2 gap-3 overflow-y-auto scrollbar-thin">
         {searchResults.map((video) => (
           <Card key={video.id} className="bg-neutral-800 h-fit border-gray-700 hover:bg-neutral-700 transition-colors">
             <CardContent className="p-3">

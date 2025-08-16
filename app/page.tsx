@@ -57,40 +57,40 @@ export default function HomePage() {
         className="custom-rays"
       />
       </div>
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen text-center bg-black text-white flex flex-col items-center justify-center p-8">
       <BlurText
         text="Multi-User YouTube Watch Party"
         delay={150}
         animateBy="words"
         direction="top"
         onAnimationComplete={handleAnimationComplete}
-        className="text-7xl font-extrabold mb-20"
+        className="text-4xl flex justify-center md:text-7xl font-extrabold mb-10 md:mb-20"
       />
 
       <motion.div
-        className="w-full max-w-4xl bg-neutral-900/50 backdrop-blur-lg rounded-xl p-6 shadow-xl border border-neutral-800"
+        className="w-full max-w-4xl bg-neutral-900/50 backdrop-blur-lg rounded-xl p-0 md:p-6 shadow-xl border border-neutral-800"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
         <input
           placeholder="Enter Your Name"
-          className="w-full p-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white text-center"
+          className="w-full p-2 md:p-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white text-center"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
       </motion.div>
 
-      <div className="flex z-10 flex-wrap gap-4 justify-center mt-6">
-        <button onClick={createRoom} className="bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-300 shadow-md">
+      <div className="flex z-10 flex-wrap gap-4 justify-center mt-3 md:mt-6">
+        <button onClick={createRoom} className="bg-white md:w-auto w-full max-w-4xl text-black px-6 py-1 md:py-3 rounded-lg hover:bg-gray-300 shadow-md">
           Create Room
         </button>
         <input
           placeholder="Enter Room Code"
-          className="w-64 p-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white text-center"
+          className="md:w-64 p-1 md:p-3 w-full max-w-4xl bg-neutral-800 border border-neutral-700 rounded-lg text-white text-center"
           value={roomCode}
           onChange={(e) => setRoomCode(e.target.value)}
         />
-        <button onClick={joinRoom} className="bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-600 shadow-md">
+        <button onClick={joinRoom} className="bg-gray-700 w-full max-w-4xl md:w-auto  text-white px-6 py-1 md:py-3 rounded-lg hover:bg-gray-600 shadow-md">
           Join Room
         </button>
       </div>

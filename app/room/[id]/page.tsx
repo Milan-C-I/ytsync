@@ -7,7 +7,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation"
 import { io } from "socket.io-client"
 import YouTube, { type YouTubePlayer } from "react-youtube"
 import { motion } from "framer-motion"
-import { Users, MessageCircle, Video } from "lucide-react"
+import { Users, MessageCircle, Video, ArrowLeft, Home } from "lucide-react"
 import { YouTubeSearch } from "@/components/youtube-search"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -194,11 +194,7 @@ export default function RoomPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
-          <button
-            onClick={handleGoHome}
-            className="p-2 flex justify-center font-bold fixed left-2 top-4 bg-black text-white w-12 h-12 rounded-full hover:bg-gray-700 transition"
-          >~_~
-          </button>
+          
       <div className="container mx-auto p-4">
         {/* Header */}
         <motion.div className="text-center mb-6" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
@@ -208,7 +204,13 @@ export default function RoomPage() {
           <p className="text-gray-400 mt-2">
             Welcome, <span className="text-blue-400 font-medium">{userName}</span>!
           </p>
+          
           <div className="flex items-center justify-center gap-4 text-gray-300">
+            <button
+            onClick={handleGoHome}
+            className="p-2 flex justify-center font-bold bg-black text-white rounded-full hover:bg-gray-700 transition"
+          ><Home className="w-4 h-4" />
+          </button>
             <span className="text-lg">
               Room: <span className="font-mono text-red-400">{roomCode}</span>
             </span>
